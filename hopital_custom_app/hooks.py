@@ -11,12 +11,12 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/hopital_custom_app/css/hopital_custom_app.css"
-# app_include_js = "/assets/hopital_custom_app/js/hopital_custom_app.js"
+app_include_js = "/assets/hopital_custom_app/js/custom/lab_test.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/hopital_custom_app/css/hopital_custom_app.css"
 # web_include_js = "/assets/hopital_custom_app/js/hopital_custom_app.js"
-
+# app_include_js = "assets/hopital_custom_app/js/custom/lab_test.js"
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "hopital_custom_app/public/scss/website"
 
@@ -122,13 +122,21 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	# "*": {
+	# 	"on_update": "method",
+	# 	"on_cancel": "method",
+	# 	"on_trash": "method"
+	# },
+ 
+ "Sales Invoice": {
+    "on_submit": [
+        "hopital_custom_app.api.update_custom_procedure_invoiced",
+        "hopital_custom_app.custom_field.create_journal_entry_on_sales_invoice_submit"
+        
+    ]
+}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -212,6 +220,22 @@ app_license = "mit"
 # 		"doctype": "{doctype_4}"
 # 	}
 # ]
+
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            ["module", "=", "Hopital Custom App"]
+        ]
+    },
+    {
+        "doctype": "Client Script",
+        "filters": [
+            ["module", "=", "Hopital Custom App"]
+        ]
+    },
+]
+
 
 # Authentication and authorization
 # --------------------------------
