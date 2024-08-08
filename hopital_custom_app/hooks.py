@@ -225,13 +225,13 @@ fixtures = [
     {
         "doctype": "Custom Field",
         "filters": [
-            ["module", "=", "Hopital Custom App"]
+            ["module", "=", "HMH CUSTOM APP"]
         ]
     },
     {
         "doctype": "Client Script",
         "filters": [
-            ["module", "=", "Hopital Custom App"]
+            ["module", "=", "HMH CUSTOM APP"]
         ]
     },
 ]
